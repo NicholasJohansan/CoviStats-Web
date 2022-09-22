@@ -68,7 +68,11 @@ const Header: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(prefersDark);
 
   useEffect(() => {
-
+    if (isDarkMode) {
+      window.document.documentElement.classList.add('dark');
+    } else {
+      window.document.documentElement.classList.remove('dark');
+    }
   }, [isDarkMode]);
 
   return (
