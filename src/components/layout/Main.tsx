@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createStyles, Style } from '../../utils/styles';
 
 import searchIcon from '../../assets/svg/searchbar_icon.svg'
@@ -9,6 +9,9 @@ import ascendingCasesFilterIcon from '../../assets/svg/filter_buttons/ascending_
 import descendingCasesFilterIcon from '../../assets/svg/filter_buttons/descending_cases_filter_icon.svg';
 
 import "./Main.styles.css"
+import useData from '../../hooks/useData';
+import Api from '../../utils/api';
+import { BasicCountryData } from '../../utils/api.interfaces';
 
 const styles: Style = createStyles({
   main: [
@@ -96,10 +99,24 @@ const styles: Style = createStyles({
   countryResultCases: [
     "relative",
     "top-[0.15rem]"
+  ],
+  loading: [
+    "text-center",
+    "text-white"
+  ],
+  noResultsText: [
+    "text-black"
   ]
 });
 
 const Main: React.FC = () => {
+
+  const [search, setSearch] = useState("");
+
+  const countries: BasicCountryData[] = useData(Api.getCountries);
+  const filteredCountries: BasicCountryData[] = countries ? countries.filter((country: BasicCountryData) => {
+    return country.name.toLowerCase().includes(search.toLowerCase());
+  }) : [];
 
   return (
     <main className={styles.main}>
@@ -118,15 +135,28 @@ const Main: React.FC = () => {
       </header>
       <div className={styles.searchContainer}>
         <img className={styles.searchIcon} src={searchIcon} alt="Search Icon" />
-        <input className={styles.searchBar} type="text" name="search" id="searchbar" placeholder="Search" />
+        <input
+          className={styles.searchBar}
+          type="text"
+          name="search"
+          id="searchbar"
+          placeholder="Search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)} />
       </div>
       <div id='countriesResults' className={styles.countriesResults}>
-        { Array(20).fill(0).map((_, i: number) => 
-          <div className={styles.countryResult} key={i}>
-            <span className={styles.countryResultName}>Country XYZ</span>
-            <span className={styles.countryResultCases}>0 cases</span>
-          </div>
-        ) }
+        {
+          countries === null
+          ? <div className={styles.loading}>Loading...</div>
+          : filteredCountries.length > 0
+          ? filteredCountries.map((country: BasicCountryData) =>
+            <div className={styles.countryResult} key={country.name}>
+              <span className={styles.countryResultName}>{country.name}</span>
+              <span className={styles.countryResultCases}>{country.totalCases.toLocaleString("en")} cases</span>
+            </div>
+          )
+          : <div className={styles.noResultsText}>No countries found</div>
+        }
       </div>
     </main>
   );
