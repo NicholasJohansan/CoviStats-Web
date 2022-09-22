@@ -3,7 +3,8 @@ import { createStyles, Style } from "../../utils";
 
 const styles: Style = createStyles({
   header: [
-    "bg-gray-200",
+    "bg-pink",
+    "text-pink-fg",
     "h-10",
     "flex",
     "justify-center",

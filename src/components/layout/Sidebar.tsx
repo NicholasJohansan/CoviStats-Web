@@ -3,7 +3,8 @@ import { createStyles, Style } from "../../utils";
 
 const styles: Style = createStyles({
   sidebar: [
-    "bg-gray-300",
+    "bg-pink-light",
+    "text-pink-light-fg",
     "flex",
     "justify-center",
     "items-center",

@@ -3,7 +3,8 @@ import { createStyles, Style } from '../../utils';
 
 const styles: Style = createStyles({
   bottomAppBar: [
-    "bg-gray-200",
+    "bg-pink",
+    "text-pink-fg",
     "flex",
     "justify-center",
     "items-center",

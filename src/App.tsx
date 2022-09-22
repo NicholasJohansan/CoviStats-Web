@@ -4,7 +4,7 @@ import { createStyles, Style } from "./utils"
 
 const styles: Style = createStyles({
   app: [
-    "bg-gray-100",
+    "bg-white",
     "h-screen",
     "w-screen",
     "sm:flex",

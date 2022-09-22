@@ -3,7 +3,8 @@ import { createStyles, Style } from '../../utils';
 
 const styles: Style = createStyles({
   main: [
-    "bg-gray-100",
+    "bg-white",
+    "text-watermelon",
     "flex-grow",
     "flex",
     "justify-center",
