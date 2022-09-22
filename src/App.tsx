@@ -7,14 +7,17 @@ const styles: Style = createStyles({
     "bg-white",
     "h-screen",
     "w-screen",
-    "sm:flex",
-    "sm:flex-col"
+    "flex",
+    "flex-col",
   ],
   content: [
     "w-full",
-    "sm:flex-grow",
+    "flex-grow",
     "sm:items-stretch",
-    "sm:flex"
+    "flex",
+    "flex-col",
+    "sm:flex-row",
+    "overflow-auto"
   ]
 });
 

@@ -9,9 +9,9 @@ const styles: Style = createStyles({
   sidebar: [
     "bg-pink-light",
     "text-pink-light-fg",
+    "px-4",
     "flex",
     "flex-col",
-    "w-64",
     "gap-4"
   ],
   header: [

@@ -8,7 +8,8 @@ const styles: Style = createStyles({
     "flex",
     "justify-center",
     "items-center",
-    "p-1",
+    "gap-2",
+    "p-3",
     "fixed",
     "bottom-0",
     "w-full"
@@ -16,10 +17,21 @@ const styles: Style = createStyles({
 });
 
 const BottomAppBar: React.FC = () => {
+  const [bottomAppBarHeight, setBottomAppBarHeight] = React.useState(0);
+  const bottomAppBar = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (bottomAppBar.current) {
+      setBottomAppBarHeight(bottomAppBar.current.clientHeight);
+    }
+  }, [bottomAppBar]);
+
   return (
-    <aside className={styles.bottomAppBar}>
-      BottomAppBar
+    <>
+    <div style={{height: `${bottomAppBarHeight}px`}}></div>
+    <aside ref={bottomAppBar} className={styles.bottomAppBar}>
     </aside>
+    </>
   );
 };
 
