@@ -1,6 +1,6 @@
 import { Header, Sidebar, Main, BottomAppBar } from "./components/layout";
 import useIsMobile from "./hooks/useIsMobile";
-import { createStyles, Style } from "./utils"
+import { createStyles, Style } from "./utils/styles"
 
 const styles: Style = createStyles({
   app: [

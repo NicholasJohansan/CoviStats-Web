@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStyles, Style } from '../../utils';
+import { createStyles, Style } from '../../utils/styles';
 
 const styles: Style = createStyles({
   bottomAppBar: [
