@@ -42,7 +42,10 @@ const styles: Style = createStyles({
     "h-9",
     "sm:w-10",
     "sm:h-10",
-    "cursor-pointer"
+    "cursor-pointer",
+    "hover:scale-105",
+    "transition-all",
+    "active:scale-95"
   ],
   searchContainer: [
     "flex",
@@ -109,13 +112,32 @@ const styles: Style = createStyles({
   ]
 });
 
+enum SortType {
+  aToZ = "aToZ",
+  zToA = "zToA",
+  ascendingCases = "ascendingCases",
+  descendingCases = "descendingCases"
+}
+
 const Main: React.FC = () => {
 
   const [search, setSearch] = useState("");
+  const [sortType, setSortType] = useState<SortType>(SortType.aToZ);
 
   const countries: BasicCountryData[] = useData(Api.getCountries);
-  const filteredCountries: BasicCountryData[] = countries ? countries.filter((country: BasicCountryData) => {
+  const displayedCountries: BasicCountryData[] = countries ? countries.filter((country: BasicCountryData) => {
     return country.name.toLowerCase().includes(search.toLowerCase());
+  }).sort((a: BasicCountryData, b: BasicCountryData) => {
+    switch (sortType) {
+      case SortType.aToZ:
+        return a.name.localeCompare(b.name);
+      case SortType.zToA:
+        return b.name.localeCompare(a.name);
+      case SortType.ascendingCases:
+        return a.totalCases - b.totalCases;
+      case SortType.descendingCases:
+        return b.totalCases - a.totalCases;
+    }
   }) : [];
 
   return (
@@ -127,10 +149,10 @@ const Main: React.FC = () => {
         </div>
         <div className={styles.headerRight}>
           {/* Right */}
-          <img className={styles.filterIcon} src={ascendingCasesFilterIcon} alt="Ascending Cases Filter Icon" />
-          <img className={styles.filterIcon} src={descendingCasesFilterIcon} alt="Descending Cases Filter Icon" />
-          <img className={styles.filterIcon} src={aToZFilterIcon} alt="A to Z Alphabetical Filter Icon" />
-          <img className={styles.filterIcon} src={zToAFilterIcon} alt="Z to A Alphabetical Filter Icon" />
+          <img onClick={() => setSortType(SortType.ascendingCases)} className={styles.filterIcon} src={ascendingCasesFilterIcon} alt="Ascending Cases Filter Icon" />
+          <img onClick={() => setSortType(SortType.descendingCases)} className={styles.filterIcon} src={descendingCasesFilterIcon} alt="Descending Cases Filter Icon" />
+          <img onClick={() => setSortType(SortType.aToZ)} className={styles.filterIcon} src={aToZFilterIcon} alt="A to Z Alphabetical Filter Icon" />
+          <img onClick={() => setSortType(SortType.zToA)} className={styles.filterIcon} src={zToAFilterIcon} alt="Z to A Alphabetical Filter Icon" />
         </div>
       </header>
       <div className={styles.searchContainer}>
@@ -148,8 +170,8 @@ const Main: React.FC = () => {
         {
           countries === null
           ? <div className={styles.loading}>Loading...</div>
-          : filteredCountries.length > 0
-          ? filteredCountries.map((country: BasicCountryData) =>
+          : displayedCountries.length > 0
+          ? displayedCountries.map((country: BasicCountryData) =>
             <div className={styles.countryResult} key={country.name}>
               <span className={styles.countryResultName}>{country.name}</span>
               <span className={styles.countryResultCases}>{country.totalCases.toLocaleString("en")} cases</span>
