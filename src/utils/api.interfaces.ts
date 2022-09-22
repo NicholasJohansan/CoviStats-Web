@@ -29,7 +29,9 @@ export interface BasicCountryData {
   totalCases: number;
 }
 
-export interface Cases {
+type StringNumberPair = {[key: string]: number};
+
+export interface Cases extends StringNumberPair {
   total: number;
   active: number;
   recovered: number;

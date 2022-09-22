@@ -79,7 +79,8 @@ const Header: React.FC = () => {
     <header className={styles.header}>
       <div className={styles.headerLeft}>
         {/* Left */}
-        <span className={styles.text}>CoviStats</span>
+        <h1 className={styles.text}>CoviStats</h1>
+        {/* TODO: Remove icon or Make simpler one */}
         <img className={styles.logo} src={headerLogo} draggable="false" />
       </div>
       <div
