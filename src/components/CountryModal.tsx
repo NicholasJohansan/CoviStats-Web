@@ -6,6 +6,7 @@ import closeIcon from '../assets/svg/x_icon.svg';
 import useData from '../hooks/useData';
 import Api from '../utils/api';
 import { FullCountryData } from '../utils/api.interfaces';
+import StatGroup from './StatGroup';
 
 const styles = createStyles({
   modalOverlay: [
@@ -37,20 +38,6 @@ const styles = createStyles({
     "relative",
     "top-1"
   ],
-  statGroup: [
-    "flex",
-    "flex-col",
-    "text-center",
-    "mb-2"
-  ],
-  statNumber: [
-    "text-4xl",
-    "font-light",
-    "text-black"
-  ],
-  statLabel: [
-    "text-lg"
-  ],
   closeIcon: [
     "cursor-pointer",
     "hover:scale-105",
@@ -76,10 +63,9 @@ const CountryModal: React.FC = () => {
           countryData === null
           ? <div className={styles.loading}>Loading...</div>
           : <div className={styles.content}>
-            { Object.keys(countryData.cases).map((key: string) => <div key={key} className={styles.statGroup}>
-              <span className={styles.statNumber}>{ countryData.cases[key].toLocaleString("en") }</span>
-              <span className={styles.statLabel}>{ key }</span>
-            </div>) }
+            { Object.keys(countryData.cases).map((key: string) =>
+              <StatGroup key={key} number={countryData.cases[key]} label={key} />
+            ) }
           </div>
         }
       </div>

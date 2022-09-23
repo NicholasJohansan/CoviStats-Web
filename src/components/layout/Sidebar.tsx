@@ -4,6 +4,7 @@ import useData from "../../hooks/useData";
 import Api from "../../utils/api";
 import { Cases } from "../../utils/api.interfaces";
 import { createStyles, Style } from "../../utils/styles";
+import StatGroup from "../StatGroup";
 
 const styles: Style = createStyles({
   sidebar: [
@@ -32,20 +33,6 @@ const styles: Style = createStyles({
   loading: [
     "w-full",
     "text-center"
-  ],
-  statGroup: [
-    "flex",
-    "flex-col",
-    "text-center",
-    "mb-2"
-  ],
-  statNumber: [
-    "text-4xl",
-    "font-light",
-    "text-black"
-  ],
-  statLabel: [
-    "text-lg"
   ]
 });
 
@@ -61,10 +48,8 @@ const Sidebar: React.FC = () => {
       {
       globalCases === null
       ? <span className={styles.loading}>Loading...</span>
-      : Object.keys(globalCases).map((key: string) => <div key={key} className={styles.statGroup}>
-          <span className={styles.statNumber}>{ globalCases[key].toLocaleString("en") }</span>
-          <span className={styles.statLabel}>{ key }</span>
-        </div>
+      : Object.keys(globalCases).map((key: string) =>
+        <StatGroup key={key} number={globalCases[key]} label={key} />
       ) 
       }
     </aside>

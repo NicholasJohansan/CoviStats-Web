@@ -109,8 +109,7 @@ const styles: Style = createStyles({
     "top-[0.15rem]"
   ],
   loading: [
-    "text-center",
-    "text-white"
+    "text-black"
   ],
   noResultsText: [
     "text-black"
