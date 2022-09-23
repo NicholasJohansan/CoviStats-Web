@@ -29,7 +29,8 @@ export const iconStyles: Style = createStyles({
   ],
   filterIconBackground: [
     "fill-watermelon",
-    "dark:fill-dark-watermelon"
+    "dark:fill-dark-watermelon",
+    "stroke-0"
   ],
   modeIcon: [
     "h-4",
