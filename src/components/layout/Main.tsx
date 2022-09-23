@@ -26,9 +26,10 @@ const styles: Style = createStyles({
     "flex",
     "justify-between",
     "items-center",
-    "text-4xl",
+    "text-3xl",
     "font-light",
-    "dark:font-normal"
+    "dark:font-normal",
+    "sm:text-4xl"
   ],
   headerRight: [
     "flex",
@@ -102,6 +103,10 @@ const styles: Style = createStyles({
   noResultsText: [
     "text-black",
     "dark:text-white"
+  ],
+  headerText: [
+    "relative",
+    "top-2"
   ]
 });
 
@@ -139,7 +144,7 @@ const Main: React.FC = () => {
       <header className={styles.header}>
         <div>
           {/* Left */}
-          <h2>Countries</h2>
+          <h2 className={styles.headerText}>Countries</h2>
         </div>
         <div className={styles.headerRight}>
           {/* Right */}
@@ -173,6 +178,7 @@ const Main: React.FC = () => {
           )
           : <div className={styles.noResultsText}>No countries found</div>
         }
+        <div className='mt-12' />
       </div>
     </main>
   );

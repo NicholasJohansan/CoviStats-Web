@@ -7,7 +7,9 @@ import { createStyles, Style } from '../../utils/styles';
 const styles: Style = createStyles({
   bottomAppBar: [
     "bg-pink",
+    "dark:bg-dark-pink",
     "text-pink-fg",
+    "dark:text-dark-pink-fg",
     "flex",
     "justify-center",
     "items-center",
@@ -37,7 +39,7 @@ const BottomAppBar: React.FC = () => {
     <aside ref={bottomAppBar} className={styles.bottomAppBar}>
       {globalCases === null
       ? <div className={styles.loading}>Loading...</div>
-      : <div>{globalCases.total.toLocaleString('en')} Global Cases</div> }
+      : <div>{globalCases.total.toLocaleString('en')} Global Cases </div> }
     </aside>
     </>
   );

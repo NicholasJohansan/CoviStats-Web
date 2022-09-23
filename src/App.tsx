@@ -9,6 +9,7 @@ import CountryModal from "./components/CountryModal";
 const styles: Style = createStyles({
   app: [
     "bg-white",
+    "dark:bg-black",
     "h-screen",
     "w-screen",
     "flex",
