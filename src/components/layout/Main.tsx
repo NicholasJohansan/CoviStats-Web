@@ -8,7 +8,7 @@ import zToAFilterIcon from '../../assets/svg/filter_buttons/z_to_a_alphabetical_
 import ascendingCasesFilterIcon from '../../assets/svg/filter_buttons/ascending_cases_filter_icon.svg';
 import descendingCasesFilterIcon from '../../assets/svg/filter_buttons/descending_cases_filter_icon.svg';
 
-import "./Main.styles.css"
+import "./Main.styles.css";
 import useData from '../../hooks/useData';
 import Api from '../../utils/api';
 import { BasicCountryData } from '../../utils/api.interfaces';
