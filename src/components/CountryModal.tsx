@@ -27,6 +27,7 @@ const styles = createStyles({
     "mt-8",
     "max-w-[400px]",
     "w-[90%]",
+    "shadow-xl",
   ],
   header: [
     "text-4xl",
