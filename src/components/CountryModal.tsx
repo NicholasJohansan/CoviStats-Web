@@ -13,7 +13,8 @@ const styles = createStyles({
     "inset-0",
     "bg-black",
     "bg-opacity-50",
-    "dark:bg-opacity-30",
+    "dark:bg-opacity-10",
+    "dark:bg-white",
     "z-50",
   ],
   modal: [
