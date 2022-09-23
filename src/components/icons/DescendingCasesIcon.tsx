@@ -6,20 +6,20 @@ const DescendingCasesIcon: React.FC = () => {
     <svg className={iconStyles.filterIcon} width="40" height="40" version="1.1" viewBox="0 0 10.583 10.583" xmlns="http://www.w3.org/2000/svg">
       <g transform="matrix(1.0116 0 0 1.0116 -.20503 -.01384)">
         {/* <!-- Background --> */}
-        <rect className={iconStyles.filterIconBackground} x=".2268" y=".037812" width="10.413" height="10.413" ry="2.7523" fill="#ff7070" stroke="#ff7070" stroke-width=".048263"/>
+        <rect className={iconStyles.filterIconBackground} x=".2268" y=".037812" width="10.413" height="10.413" ry="2.7523" fill="#ff7070" stroke="#ff7070" strokeWidth=".048263"/>
         {/* <!-- Arrow --> */}
         <g transform="matrix(.36775 0 0 -.36775 -94.828 -157.77)">
           {/* <!-- Arrow Tip --> */}
-          <g stroke-width="1.2602" aria-label="^">
-            <path d="m283.31-448.23q-0.26212-0.38311-0.56457-0.80654-0.30245-0.44359-0.62506-0.88718-0.30245-0.44359-0.56458-0.8267-0.26212 0.38311-0.56457 0.8267t-0.6049 0.88718q-0.30245 0.42343-0.56457 0.80654h-0.68555q0.6049-0.90735 1.2098-1.8147 0.60489-0.92751 1.2098-1.8349 0.6049 0.90735 1.2098 1.8349 0.62506 0.90735 1.23 1.8147z" fill="#fff" stroke-width="1.2602"/>
+          <g strokeWidth="1.2602" aria-label="^">
+            <path d="m283.31-448.23q-0.26212-0.38311-0.56457-0.80654-0.30245-0.44359-0.62506-0.88718-0.30245-0.44359-0.56458-0.8267-0.26212 0.38311-0.56457 0.8267t-0.6049 0.88718q-0.30245 0.42343-0.56457 0.80654h-0.68555q0.6049-0.90735 1.2098-1.8147 0.60489-0.92751 1.2098-1.8349 0.6049 0.90735 1.2098 1.8349 0.62506 0.90735 1.23 1.8147z" fill="#fff" strokeWidth="1.2602"/>
           </g>
           {/* <!-- Arrow Stick --> */}
-          <g transform="scale(1.0837 .92275)" stroke-width="1.1629" aria-label="|">
-            <path d="m259.41-488.51h0.81865v17.433h-0.81865z" fill="#fff" stroke-width="1.1629"/>
+          <g transform="scale(1.0837 .92275)" strokeWidth="1.1629" aria-label="|">
+            <path d="m259.41-488.51h0.81865v17.433h-0.81865z" fill="#fff" strokeWidth="1.1629"/>
           </g>
         </g>
         {/* <!-- Virus --> */}
-        <g transform="matrix(.09756 -.010075 .010075 .09756 91.413 24.644)" fill="#fff" stroke-width="0">
+        <g transform="matrix(.09756 -.010075 .010075 .09756 91.413 24.644)" fill="#fff" strokeWidth="0">
           {/* <!-- Virus Core --> */}
           <path d="m-832.57-285.92a26.726 26.726 0 0 1-26.726 26.726 26.726 26.726 0 0 1-26.726-26.726 26.726 26.726 0 0 1 26.726-26.726 26.726 26.726 0 0 1 26.726 26.726"/>
           {/* <!-- 8D Virus Spikes --> */}

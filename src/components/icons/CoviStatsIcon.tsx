@@ -11,7 +11,7 @@ const styles: Style = createStyles({
 const CoviStatsIcon: React.FC = () => {
   return (
     <svg className={styles.icon} width="58.5" height="58.5" version="1.1" viewBox="0 0 15.478 15.478" xmlns="http://www.w3.org/2000/svg">
-      <g transform="matrix(.44648 0 0 .44646 5.4276 242.2)" stroke-width="0">
+      <g transform="matrix(.44648 0 0 .44646 5.4276 242.2)" strokeWidth="0">
         <g>
           {/* <!-- Bar 1 --> */}
           <rect x="-6.8874" y="-516.8" width="4.1664" height="4.8266" ry="1.1628" fill="#ff9a9a"/>
