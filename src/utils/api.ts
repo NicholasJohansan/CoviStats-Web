@@ -50,7 +50,8 @@ class Api {
     return countriesData;
   }
 
-  public static async getCountryData(country: string): Promise<FullCountryData> {
+  public static async getCountryData(country: string | null): Promise<FullCountryData | null> {
+    if (!country) return null;
     const url = Api.COUNTRIES_URL + `/${encodeURIComponent(country.toLowerCase())}`;
     const countryData: RawCountryData = await Api.fetchData(url);
     return Parser.parseFullData(countryData);

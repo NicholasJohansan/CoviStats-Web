@@ -1,0 +1,90 @@
+import React from 'react';
+import CountryContext from '../contexts/CountryContext';
+import { createStyles } from '../utils/styles';
+
+import closeIcon from '../assets/svg/x_icon.svg';
+import useData from '../hooks/useData';
+import Api from '../utils/api';
+import { FullCountryData } from '../utils/api.interfaces';
+
+const styles = createStyles({
+  modalOverlay: [
+    "fixed",
+    "inset-0",
+    "bg-black",
+    "bg-opacity-50",
+    "z-50",
+  ],
+  modal: [
+    "m-auto",
+    "bg-pink-light",
+    "p-4",
+    "text-pink-light-fg",
+    "rounded-lg",
+    "mt-8",
+    "max-w-[400px]",
+    "w-[90%]",
+  ],
+  header: [
+    "text-4xl",
+    "font-light",
+    "flex",
+    "justify-between",
+    "mb-4",
+    "gap-4"
+  ],
+  countryName: [
+    "relative",
+    "top-1"
+  ],
+  statGroup: [
+    "flex",
+    "flex-col",
+    "text-center",
+    "mb-2"
+  ],
+  statNumber: [
+    "text-4xl",
+    "font-light",
+    "text-black"
+  ],
+  statLabel: [
+    "text-lg"
+  ],
+  closeIcon: [
+    "cursor-pointer",
+    "hover:scale-105",
+    "active:scale-95"
+  ]
+});
+
+const CountryModal: React.FC = () => {
+  const { country, setCountry } = React.useContext(CountryContext);
+  const countryData: FullCountryData | null = useData(async () => Api.getCountryData(country?.name || null));
+
+  if (country === null) {
+    return null;
+  }
+  return (
+    <div className={styles.modalOverlay} onClick={() => setCountry(null)}>
+      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+        <header className={styles.header}>
+          <span className={styles.countryName}>{country.name}</span>
+          <img onClick={() => setCountry(null)} className={styles.closeIcon} src={closeIcon} />
+        </header>
+        {
+          countryData === null
+          ? <div className={styles.loading}>Loading...</div>
+          : <div className={styles.content}>
+            { Object.keys(countryData.cases).map((key: string) => <div key={key} className={styles.statGroup}>
+              <span className={styles.statNumber}>{ countryData.cases[key].toLocaleString("en") }</span>
+              <span className={styles.statLabel}>{ key }</span>
+            </div>) }
+          </div>
+        }
+      </div>
+    </div>
+  );
+}
+
+export default CountryModal;

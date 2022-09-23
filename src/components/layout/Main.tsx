@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { createStyles, Style } from '../../utils/styles';
 
 import searchIcon from '../../assets/svg/searchbar_icon.svg'
@@ -12,6 +12,7 @@ import "./Main.styles.css"
 import useData from '../../hooks/useData';
 import Api from '../../utils/api';
 import { BasicCountryData } from '../../utils/api.interfaces';
+import CountryContext from '../../contexts/CountryContext';
 
 const styles: Style = createStyles({
   main: [
@@ -93,7 +94,11 @@ const styles: Style = createStyles({
     "rounded-lg",
     "text-lg",
     "font-light",
-    "cursor-pointer"
+    "cursor-pointer",
+    "hover:scale-[1.01]",
+    "transition-all",
+    "active:opacity-75",
+    "active:duration-100"
   ],
   countryResultName: [
     "relative",
@@ -120,6 +125,7 @@ enum SortType {
 }
 
 const Main: React.FC = () => {
+  const { setCountry } = useContext(CountryContext);
 
   const [search, setSearch] = useState("");
   const [sortType, setSortType] = useState<SortType>(SortType.aToZ);
@@ -172,7 +178,7 @@ const Main: React.FC = () => {
           ? <div className={styles.loading}>Loading...</div>
           : displayedCountries.length > 0
           ? displayedCountries.map((country: BasicCountryData) =>
-            <div className={styles.countryResult} key={country.name}>
+            <div onClick={() => setCountry(country)} className={styles.countryResult} key={country.name}>
               <span className={styles.countryResultName}>{country.name}</span>
               <span className={styles.countryResultCases}>{country.totalCases.toLocaleString("en")} cases</span>
             </div>
