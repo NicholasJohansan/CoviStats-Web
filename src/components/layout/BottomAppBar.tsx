@@ -1,4 +1,7 @@
 import React from 'react';
+import useData from '../../hooks/useData';
+import Api from '../../utils/api';
+import { Cases } from '../../utils/api.interfaces';
 import { createStyles, Style } from '../../utils/styles';
 
 const styles: Style = createStyles({
@@ -24,12 +27,17 @@ const BottomAppBar: React.FC = () => {
     if (bottomAppBar.current) {
       setBottomAppBarHeight(bottomAppBar.current.clientHeight);
     }
-  }, [bottomAppBar]);
+  }, [bottomAppBar.current?.clientHeight]);
+
+  const globalCases: Cases | null = useData(Api.getGlobalData);
 
   return (
     <>
-    <div style={{height: `${bottomAppBarHeight}px`}}></div>
+    <div className="flex-shrink-0" style={{height: `${bottomAppBarHeight}px`}}></div>
     <aside ref={bottomAppBar} className={styles.bottomAppBar}>
+      {globalCases === null
+      ? <div className={styles.loading}>Loading...</div>
+      : <div>{globalCases.total.toLocaleString('en')} Global Cases</div> }
     </aside>
     </>
   );

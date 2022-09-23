@@ -20,7 +20,7 @@ const styles: Style = createStyles({
     "sm:items-stretch",
     "flex",
     "flex-col",
-    "gap-4",
+    "gap-1",
     "sm:gap-0",
     "sm:flex-row",
     "overflow-auto"
