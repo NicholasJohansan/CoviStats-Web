@@ -22,8 +22,9 @@ const styles: Style = createStyles({
 });
 
 const DarkModeToggle: React.FC = () => {
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(prefersDark);
+  const darkMode = localStorage.getItem('darkMode');
+  const browserPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(darkMode === null ? browserPrefersDark : darkMode === 'true');
 
   useEffect(() => {
     if (isDarkMode) {
@@ -33,10 +34,15 @@ const DarkModeToggle: React.FC = () => {
     }
   }, [isDarkMode]);
 
+  const toggleDarkMode = () => {
+    localStorage.setItem('darkMode', (!isDarkMode).toString());
+    setIsDarkMode(!isDarkMode);
+  }
+
   return (
     <div
       className={styles.container}
-      onClick={() => setIsDarkMode(!isDarkMode)}>
+      onClick={toggleDarkMode}>
       <span className={styles.text}>{ isDarkMode ? "Light" : "Dark" } Mode</span>
       { isDarkMode ? <SunIcon /> : <MoonIcon /> }
     </div>
