@@ -11,7 +11,8 @@ const styles: Style = createStyles({
   statNumber: [
     "text-4xl",
     "font-light",
-    "text-black"
+    "text-black",
+    "dark:text-white"
   ],
   statLabel: [
     "text-lg"

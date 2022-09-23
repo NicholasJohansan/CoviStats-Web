@@ -5,7 +5,7 @@ const AToZIcon: React.FC = () => {
   return (
     <svg className={iconStyles.filterIcon} width="40" height="40" version="1.1" viewBox="0 0 10.583 10.583" xmlns="http://www.w3.org/2000/svg">
       {/* <!-- Background --> */}
-      <rect x=".024412" y=".024413" width="10.535" height="10.535" ry="2.7843" fill="#ff7070" stroke="#ff7070" stroke-width=".048825"/>
+      <rect className={iconStyles.filterIconBackground} x=".024412" y=".024413" width="10.535" height="10.535" ry="2.7843" fill="#ff7070" stroke="#ff7070" stroke-width=".048825"/>
       {/* <!-- Alphabet A --> */}
       <g stroke-width=".46884" aria-label="A">
         <path d="m1.8854 8.0978 2.2504-5.5586h0.030006l2.2505 5.5586h-0.41258l-1.9579-4.9735 0.25505-0.14253-2.0479 5.116zm1.0877-2.1079h2.363l0.10502 0.34507h-2.558z" fill="#fff" stroke-width=".46884"/>

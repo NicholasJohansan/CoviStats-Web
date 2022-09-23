@@ -27,6 +27,10 @@ export const iconStyles: Style = createStyles({
     "transition-all",
     "active:scale-95"
   ],
+  filterIconBackground: [
+    "fill-watermelon",
+    "dark:fill-dark-watermelon"
+  ],
   modeIcon: [
     "h-4",
     "w-4",

@@ -6,7 +6,7 @@ const DescendingCasesIcon: React.FC = () => {
     <svg className={iconStyles.filterIcon} width="40" height="40" version="1.1" viewBox="0 0 10.583 10.583" xmlns="http://www.w3.org/2000/svg">
       <g transform="matrix(1.0116 0 0 1.0116 -.20503 -.01384)">
         {/* <!-- Background --> */}
-        <rect x=".2268" y=".037812" width="10.413" height="10.413" ry="2.7523" fill="#ff7070" stroke="#ff7070" stroke-width=".048263"/>
+        <rect className={iconStyles.filterIconBackground} x=".2268" y=".037812" width="10.413" height="10.413" ry="2.7523" fill="#ff7070" stroke="#ff7070" stroke-width=".048263"/>
         {/* <!-- Arrow --> */}
         <g transform="matrix(.36775 0 0 -.36775 -94.828 -157.77)">
           {/* <!-- Arrow Tip --> */}

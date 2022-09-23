@@ -16,9 +16,19 @@ module.exports = {
           'light': '#fff3f3',
           'light-fg': '#ff6d6d'
         },
+        'dark-pink': {
+          DEFAULT: '#320d0d',
+          'fg': '#ff4949',
+          'light': '#3a0000',
+          'light-fg': '#ff6666'
+        },
         'watermelon': {
           DEFAULT: '#ff7070',
           fg: '#ffbebe'
+        },
+        'dark-watermelon': {
+          DEFAULT: '#890000',
+          "fg": "#5a0000"
         }
       },
     },

@@ -5,7 +5,9 @@ import { CoviStatsIcon, SunIcon, MoonIcon } from "../icons";
 const styles: Style = createStyles({
   header: [
     "bg-pink",
+    "dark:bg-dark-pink",
     "text-pink-fg",
+    "dark:text-dark-pink-fg",
     "flex",
     "justify-between",
     "items-center",
@@ -24,6 +26,7 @@ const styles: Style = createStyles({
     "items-center",
     "gap-2",
     "bg-watermelon",
+    "dark:bg-dark-watermelon",
     "text-white",
     "px-4",
     "py-1",

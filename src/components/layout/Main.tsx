@@ -10,7 +10,9 @@ import { AscendingCasesIcon, DescendingCasesIcon, AToZIcon, ZToAIcon, SearchIcon
 const styles: Style = createStyles({
   main: [
     "bg-white",
+    "dark:bg-black",
     "text-watermelon",
+    "dark:text-dark-watermelon",
     "flex-grow",
     "flex",
     "flex-col",
@@ -26,6 +28,7 @@ const styles: Style = createStyles({
     "items-center",
     "text-4xl",
     "font-light",
+    "dark:font-normal"
   ],
   headerRight: [
     "flex",
@@ -41,8 +44,11 @@ const styles: Style = createStyles({
     "h-9",
     "w-full",
     "bg-watermelon",
+    "dark:bg-dark-watermelon",
     "placeholder-watermelon-fg",
+    "dark:placeholder-dark-watermelon-fg",
     "text-white",
+    "dark:font-normal",
     "rounded-lg",
     "text-2xl",
     "border-collapse",
@@ -56,6 +62,7 @@ const styles: Style = createStyles({
     "w-full",
     "h-full",
     "bg-watermelon-fg",
+    "dark:bg-dark-watermelon-fg",
     "rounded-lg",
     "flex",
     "flex-col",
@@ -67,6 +74,7 @@ const styles: Style = createStyles({
     "flex",
     "justify-between",
     "bg-watermelon",
+    "dark:bg-dark-watermelon",
     "text-white",
     "p-2",
     "px-4",
@@ -88,10 +96,12 @@ const styles: Style = createStyles({
     "top-[0.15rem]"
   ],
   loading: [
-    "text-black"
+    "text-black",
+    "dark:text-white"
   ],
   noResultsText: [
-    "text-black"
+    "text-black",
+    "dark:text-white"
   ]
 });
 

@@ -9,7 +9,9 @@ import { GlobeIcon } from "../icons";
 const styles: Style = createStyles({
   sidebar: [
     "bg-pink-light",
+    "dark:bg-dark-pink-light",
     "text-pink-light-fg",
+    "dark:text-dark-pink-light-fg",
     "px-4",
     "flex",
     "flex-col",

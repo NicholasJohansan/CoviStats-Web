@@ -5,7 +5,7 @@ const AscendingCasesIcon: React.FC = () => {
   return (
     <svg className={iconStyles.filterIcon} width="40" height="40" version="1.1" viewBox="0 0 10.583 10.583" xmlns="http://www.w3.org/2000/svg">
       {/* <!-- Background --> */}
-      <rect x=".024413" y=".024413" width="10.535" height="10.535" ry="2.7843" fill="#ff7070" stroke="#ff7070" stroke-width=".048825"/>
+      <rect className={iconStyles.filterIconBackground} x=".024413" y=".024413" width="10.535" height="10.535" ry="2.7843" fill="#ff7070" stroke="#ff7070" stroke-width=".048825"/>
       {/* <!-- Arrow --> */}
       <g transform="matrix(.37204 0 0 .37204 -96.138 170.21)">
         {/* <!-- Arrow Tip --> */}
