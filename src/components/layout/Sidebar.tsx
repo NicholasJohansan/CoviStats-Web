@@ -1,10 +1,10 @@
 import React from "react"
-import globalHeaderLogo from "../../assets/svg/global_header_logo.svg"
 import useData from "../../hooks/useData";
 import Api from "../../utils/api";
 import { Cases } from "../../utils/api.interfaces";
 import { createStyles, Style } from "../../utils/styles";
 import StatGroup from "../StatGroup";
+import { GlobeIcon } from "../icons";
 
 const styles: Style = createStyles({
   sidebar: [
@@ -43,7 +43,7 @@ const Sidebar: React.FC = () => {
     <aside className={styles.sidebar}>
       <header className={styles.header}>
         <span className={styles.text}>Global</span>
-        <img src={globalHeaderLogo} alt="Global Header Logo" />
+        <GlobeIcon />
       </header>
       {
       globalCases === null

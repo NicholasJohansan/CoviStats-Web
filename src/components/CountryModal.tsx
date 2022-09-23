@@ -1,12 +1,11 @@
 import React from 'react';
 import CountryContext from '../contexts/CountryContext';
 import { createStyles } from '../utils/styles';
-
-import closeIcon from '../assets/svg/x_icon.svg';
 import useData from '../hooks/useData';
 import Api from '../utils/api';
 import { FullCountryData } from '../utils/api.interfaces';
 import StatGroup from './StatGroup';
+import { CloseIcon } from './icons';
 
 const styles = createStyles({
   modalOverlay: [
@@ -37,11 +36,6 @@ const styles = createStyles({
   countryName: [
     "relative",
     "top-1"
-  ],
-  closeIcon: [
-    "cursor-pointer",
-    "hover:scale-105",
-    "active:scale-95"
   ]
 });
 
@@ -57,7 +51,7 @@ const CountryModal: React.FC = () => {
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <header className={styles.header}>
           <span className={styles.countryName}>{country.name}</span>
-          <img onClick={() => setCountry(null)} className={styles.closeIcon} src={closeIcon} />
+          <a onClick={() => setCountry(null)}><CloseIcon /></a>
         </header>
         {
           countryData === null

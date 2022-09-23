@@ -1,18 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { createStyles, Style } from '../../utils/styles';
-
-import searchIcon from '../../assets/svg/searchbar_icon.svg'
-
-import aToZFilterIcon from '../../assets/svg/filter_buttons/a_to_z_alphabetical_filter_icon.svg';
-import zToAFilterIcon from '../../assets/svg/filter_buttons/z_to_a_alphabetical_filter_icon.svg';
-import ascendingCasesFilterIcon from '../../assets/svg/filter_buttons/ascending_cases_filter_icon.svg';
-import descendingCasesFilterIcon from '../../assets/svg/filter_buttons/descending_cases_filter_icon.svg';
-
 import "./Main.styles.css";
 import useData from '../../hooks/useData';
 import Api from '../../utils/api';
 import { BasicCountryData } from '../../utils/api.interfaces';
 import CountryContext from '../../contexts/CountryContext';
+import { AscendingCasesIcon, DescendingCasesIcon, AToZIcon, ZToAIcon, SearchIcon } from '../icons';
 
 const styles: Style = createStyles({
   main: [
@@ -38,24 +31,10 @@ const styles: Style = createStyles({
     "flex",
     "gap-3"
   ],
-  filterIcon: [
-    "w-9",
-    "h-9",
-    "sm:w-10",
-    "sm:h-10",
-    "cursor-pointer",
-    "hover:scale-105",
-    "transition-all",
-    "active:scale-95"
-  ],
   searchContainer: [
     "flex",
     "gap-2",
     "items-center"
-  ],
-  searchIcon: [
-    "w-9",
-    "h-9"
   ],
   searchBar: [
     "font-light",
@@ -154,14 +133,14 @@ const Main: React.FC = () => {
         </div>
         <div className={styles.headerRight}>
           {/* Right */}
-          <img onClick={() => setSortType(SortType.ascendingCases)} className={styles.filterIcon} src={ascendingCasesFilterIcon} alt="Ascending Cases Filter Icon" />
-          <img onClick={() => setSortType(SortType.descendingCases)} className={styles.filterIcon} src={descendingCasesFilterIcon} alt="Descending Cases Filter Icon" />
-          <img onClick={() => setSortType(SortType.aToZ)} className={styles.filterIcon} src={aToZFilterIcon} alt="A to Z Alphabetical Filter Icon" />
-          <img onClick={() => setSortType(SortType.zToA)} className={styles.filterIcon} src={zToAFilterIcon} alt="Z to A Alphabetical Filter Icon" />
+          <a onClick={() => setSortType(SortType.ascendingCases)}><AscendingCasesIcon /></a>
+          <a onClick={() => setSortType(SortType.descendingCases)}><DescendingCasesIcon /></a>
+          <a onClick={() => setSortType(SortType.aToZ)}><AToZIcon /></a>
+          <a onClick={() => setSortType(SortType.zToA)}><ZToAIcon /></a>
         </div>
       </header>
       <div className={styles.searchContainer}>
-        <img className={styles.searchIcon} src={searchIcon} alt="Search Icon" />
+        <SearchIcon />
         <input
           className={styles.searchBar}
           type="text"
