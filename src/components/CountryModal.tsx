@@ -6,6 +6,7 @@ import Api from '../utils/api';
 import { FullCountryData } from '../utils/api.interfaces';
 import StatGroup from './StatGroup';
 import { CloseIcon } from './icons';
+import { AnimatePresence, motion, Variants } from 'framer-motion';
 
 const styles = createStyles({
   modalOverlay: [
@@ -41,34 +42,66 @@ const styles = createStyles({
   countryName: [
     "relative",
     "top-1"
+  ],
+  loading: [
+    "mb-[17.5rem]"
   ]
 });
+
+const modalVariants: Variants = {
+  initial: {
+    opacity: 0,
+    maxHeight: 0
+  },
+  show: {
+    opacity: 1,
+    maxHeight: '90%',
+    transition: {
+      duration: 0.4,
+      delay: 0.2,
+      staggerChildren: 0.2
+    }
+  },
+  exit: {
+    opacity: 0,
+    maxHeight: 0
+  }
+}
 
 const CountryModal: React.FC = () => {
   const { country, setCountry } = React.useContext(CountryContext);
   const countryData: FullCountryData | null = useData(async () => Api.getCountryData(country?.name || null));
-
-  if (country === null) {
-    return null;
-  }
   return (
-    <div className={styles.modalOverlay} onClick={() => setCountry(null)}>
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        <header className={styles.header}>
-          <span className={styles.countryName}>{country.name}</span>
-          <a onClick={() => setCountry(null)}><CloseIcon /></a>
-        </header>
-        {
-          countryData === null
+    <AnimatePresence>
+      { country &&
+      <motion.div
+        className={styles.modalOverlay}
+        onClick={() => setCountry(null)}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0, transition: { when: "afterChildren" } }}
+        transition={{ duration: 0.2 }}>
+        <motion.div
+          className={styles.modal}
+          onClick={(e) => e.stopPropagation()}
+          variants={modalVariants}
+          initial='initial'
+          animate='show'
+          exit='exit'>
+          <header className={styles.header}>
+            <span className={styles.countryName}>{country.name}</span>
+            <a onClick={() => setCountry(null)}><CloseIcon /></a>
+          </header>
+          { countryData === null
           ? <div className={styles.loading}>Loading...</div>
           : <div className={styles.content}>
             { Object.keys(countryData.cases).map((key: string) =>
               <StatGroup key={key} number={countryData.cases[key]} label={key} />
             ) }
-          </div>
-        }
-      </div>
-    </div>
+          </div> }
+        </motion.div>
+      </motion.div> }
+    </AnimatePresence>
   );
 }
 

@@ -28,12 +28,10 @@ interface StatGroupProps {
 
 const variants: Variants = {
   initial: {
-    maxWidth: 0,
-    opacity: 0,
+    opacity: 0
   },
   show: {
-    maxWidth: "200%",
-    opacity: 1,
+    opacity: 1
   }
 }
 
