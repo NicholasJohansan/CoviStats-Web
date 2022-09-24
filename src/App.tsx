@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Header, Sidebar, Main, BottomAppBar } from "./components/layout";
-import useIsMobile from "./hooks/useIsMobile";
 import CountryContext from "./contexts/CountryContext";
 import { createStyles, Style } from "./utils/styles"
 import { BasicCountryData, FullCountryData } from "./utils/api.interfaces";
@@ -30,16 +29,15 @@ const styles: Style = createStyles({
 
 const App: React.FC = () => {
   const [country, setCountry] = useState<BasicCountryData | null>(null);
-  const isMobile = useIsMobile();
 
   return (
     <CountryContext.Provider value={{ country, setCountry }}>
       <div id="app" className={styles.app}>
         <Header />
         <div className={styles.content}>
-          { !isMobile && <Sidebar /> }
+          <Sidebar />
           <Main />
-          { isMobile && <BottomAppBar /> }
+          <BottomAppBar />
         </div>
       </div>
       <CountryModal />

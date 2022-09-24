@@ -5,6 +5,8 @@ import { Cases } from "../../utils/api.interfaces";
 import { createStyles, Style } from "../../utils/styles";
 import StatGroup from "../StatGroup";
 import { GlobeIcon } from "../icons";
+import useIsMobile from "../../hooks/useIsMobile";
+import { AnimatePresence } from "framer-motion";
 
 const styles: Style = createStyles({
   sidebar: [
@@ -40,21 +42,23 @@ const styles: Style = createStyles({
 
 const Sidebar: React.FC = () => {
   const globalCases: Cases | null = useData(Api.getGlobalData);
+  const isMobile = useIsMobile();
 
   return (
-    <aside className={styles.sidebar}>
-      <header className={styles.header}>
-        <span className={styles.text}>Global</span>
-        <GlobeIcon />
-      </header>
-      {
-      globalCases === null
-      ? <span className={styles.loading}>Loading...</span>
-      : Object.keys(globalCases).map((key: string) =>
-        <StatGroup key={key} number={globalCases[key]} label={key} />
-      ) 
-      }
-    </aside>
+    <AnimatePresence>
+      { !isMobile &&
+      <aside className={styles.sidebar}>
+        <header className={styles.header}>
+          <span className={styles.text}>Global</span>
+          <GlobeIcon />
+        </header>
+        { globalCases === null
+        ? <span className={styles.loading}>Loading...</span>
+        : Object.keys(globalCases).map((key: string) =>
+          <StatGroup key={key} number={globalCases[key]} label={key} />
+        ) }
+      </aside> }
+    </AnimatePresence>
   );
 };
 
